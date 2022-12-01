@@ -1,5 +1,4 @@
 import 'package:aoc2022dart/aoc2022dart.dart';
-import 'package:aoc2022dart/day2/day2.dart';
 
 Future<void> main() async {
   print('--- START OF DAY 1 ---');
