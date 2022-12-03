@@ -3,7 +3,8 @@
 [Advent of Code 2022](https://adventofcode.com/2022/about) - Dart edition. I'm
 solving these challenges in my spare time, under the motto of "if it works, and
 if the result is correct, it's fine by me". Solutions are grouped into days. For
-each day there's the test and the "real" input. Both are provided.
+each day there's a test and "real" input. Code is sorted into parts; there are
+two parts per day.
 
 I'm not going to document what my code does, as I want you to read through the
 tasks on your own. The stories are fascinating, and I'm sure they'll bring a
@@ -34,7 +35,6 @@ families and loved ones. Make sure you spend quality time with them. To everyone
 out there reading this, take care and stay safe. The world needs you.
 
 On that note, also remember that some people are sadly not as fortunate. If you
-can, and if you want to, consider donating to charity. If you don't know where
-to look, there's an amazing website called [Charity Navigator](https://www.charitynavigator.org/index.cfm?bay=search.map).
+can, and if you want to, consider donating to charity.
 
 And for the first time in my life, I'll end a README with an emoji. Merry Christmas and a Happy New Year ❤️
