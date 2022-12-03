@@ -1,7 +1,40 @@
 # Advent of Code 2022
 
-[Advent of Code 2022](https://adventofcode.com/2022/about) - Dart edition.
+[Advent of Code 2022](https://adventofcode.com/2022/about) - Dart edition. I'm
+solving these challenges in my spare time, under the motto of "if it works, and
+if the result is correct, it's fine by me". Solutions are grouped into days. For
+each day there's the test and the "real" input. Both are provided.
 
-I'm doing this in my spare time, so I'm not being 100% serious on code-golfing my way through this challenge. My solutions might not be the best/fastest, they are a quick & dirty.
+I'm not going to document what my code does, as I want you to read through the
+tasks on your own. The stories are fascinating, and I'm sure they'll bring a
+smile to your face. Or two. The more the merrier!
 
-Happy coding!
+## Usage
+
+Make sure you have Dart installed on your system. Next, get dependencies. Now,
+you can do two things:
+
+1. Run package executable file: this prints out solutions to all problems, day
+   by day, into the console with some lovely additional info on what in the Santa's beard you're looking at.
+2. Run the test suite, which is what I'm using during development on test data
+   to verify my solutions work before submitting them.
+
+```bash
+# Christmas-based output
+dart run
+
+# Run test suite
+dart test
+```
+
+## Personal note
+
+For many of us, December is the time of the year we where gather around with our
+families and loved ones. Make sure you spend quality time with them. To everyone
+out there reading this, take care and stay safe. The world needs you.
+
+On that note, also remember that some people are sadly not as fortunate. If you
+can, and if you want to, consider donating to charity. If you don't know where
+to look, there's an amazing website called [Charity Navigator](https://www.charitynavigator.org/index.cfm?bay=search.map).
+
+And for the first time in my life, I'll end a README with an emoji. Merry Christmas and a Happy New Year ❤️
