@@ -11,9 +11,7 @@ class Day3 {
         .split('\n')
         .map((item) => _compartmentalize(item))
         .map((item) => _findCommonItemInStrings(item.first, item.second))
-        .map((item) => item.runes.single < 97
-            ? item.runes.single - 64 + 26
-            : item.runes.single - 96)
+        .map((item) => _computePriority(item))
         .reduce((value, element) => value + element);
   }
 
@@ -26,10 +24,14 @@ class Day3 {
         .slices(3)
         .map((item) => [...item.map((innerItem) => innerItem.split(''))])
         .map((item) => _findCommonItemInLists(item))
-        .map((item) => item.runes.single < 97
-            ? item.runes.single - 64 + 26
-            : item.runes.single - 96)
+        .map((item) => _computePriority(item))
         .reduce((value, element) => value + element);
+  }
+
+  static int _computePriority(String item) {
+    return item.runes.single < 97
+        ? item.runes.single - 64 + 26
+        : item.runes.single - 96;
   }
 
   static Pair<String, String> _compartmentalize(String input) {
@@ -56,9 +58,9 @@ class Day3 {
   static String _findCommonItemInLists(List<List<String>> group) {
     return group
         .fold<Set<String>>(
-            group.first.toSet(),
-            (previousValue, element) =>
-                previousValue.intersection(element.toSet()))
+          group.first.toSet(),
+          (previous, element) => previous.intersection(element.toSet()),
+        )
         .first;
   }
 
