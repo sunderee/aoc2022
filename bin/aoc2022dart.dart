@@ -16,4 +16,11 @@ Future<void> main() async {
   print('RPS score: $resultDay2Part1');
   print('Rigged RPS score: $resultDay2Part2');
   print('--- END OF DAY 2 ---\n');
+
+  print('--- START OF DAY 3 ---');
+  final resultDay3Part1 = await Day3.runPart1();
+  final resultDay3Part2 = await Day3.runPart2();
+
+  print('Items priority sum: $resultDay3Part1');
+  print('Sum of priorities of Elf groups: $resultDay3Part2');
 }

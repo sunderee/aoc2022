@@ -3,8 +3,9 @@ import 'dart:math';
 import 'package:aoc2022dart/common/read_txt.dart';
 
 class Day1 {
-  static Future<int> runPart1() async {
-    final input = await readTXT('lib/day1/test.input_1.txt');
+  static Future<int> runPart1({bool useTest = false}) async {
+    final file = useTest ? 'lib/day1/test.input_1.txt' : 'lib/day1/input_1.txt';
+    final input = await readTXT(file);
 
     final lines = input.split('\n');
     final List<int> totalCaloriesByElf = [];
@@ -35,8 +36,9 @@ class Day1 {
     return totalCaloriesByElf.reduce(max);
   }
 
-  static Future<int> runPart2() async {
-    final input = await readTXT('lib/day1/test.input_1.txt');
+  static Future<int> runPart2({bool useTest = false}) async {
+    final file = useTest ? 'lib/day1/test.input_1.txt' : 'lib/day1/input_1.txt';
+    final input = await readTXT(file);
 
     final lines = input.split('\n');
     final List<int> totalCaloriesByElf = [];

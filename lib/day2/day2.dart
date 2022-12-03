@@ -1,8 +1,10 @@
 import 'package:aoc2022dart/common/read_txt.dart';
 
 class Day2 {
-  static Future<int> runPart1() async {
-    final input = await readTXT('lib/day2/input_2.txt');
+  static Future<int> runPart1({bool useTest = false}) async {
+    final file = useTest ? 'lib/day2/test.input_2.txt' : 'lib/day2/input_2.txt';
+    final input = await readTXT(file);
+
     return input
         .split('\n')
         .map((item) => item.split(' '))
@@ -12,8 +14,10 @@ class Day2 {
         .reduce((value, element) => value + element);
   }
 
-  static Future<int> runPart2() async {
-    final input = await readTXT('lib/day2/input_2.txt');
+  static Future<int> runPart2({bool useTest = false}) async {
+    final file = useTest ? 'lib/day2/test.input_2.txt' : 'lib/day2/input_2.txt';
+    final input = await readTXT(file);
+
     return input
         .split('\n')
         .map((item) => item.split(' '))
