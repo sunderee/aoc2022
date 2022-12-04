@@ -23,4 +23,13 @@ Future<void> main() async {
 
   print('Items priority sum: $resultDay3Part1');
   print('Sum of priorities of Elf groups: $resultDay3Part2');
+  print('--- END OF DAY 3 ---\n');
+
+  print('--- START OF DAY 4 ---');
+  final resultDay4Part1 = await Day4.runPart1();
+  final resultDay4Part2 = await Day4.runPart2();
+
+  print('Number of overlapping assignments: $resultDay4Part1');
+  print('Number of partial overlaps: $resultDay4Part2');
+  print('--- END OF DAY 4 ---\n');
 }
