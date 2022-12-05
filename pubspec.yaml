@@ -16,6 +16,10 @@ dependencies:
     git:
       url: git@github.com:sunderee/dart-scope-functions.git
       ref: master
+  stack:
+    git:
+      url: git@github.com:sunderee/stack.git
+      ref: master
 
 dev_dependencies:
   lints: ^2.0.1

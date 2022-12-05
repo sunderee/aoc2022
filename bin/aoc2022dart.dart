@@ -32,4 +32,12 @@ Future<void> main() async {
   print('Number of overlapping assignments: $resultDay4Part1');
   print('Number of partial overlaps: $resultDay4Part2');
   print('--- END OF DAY 4 ---\n');
+
+  print('--- START OF DAY 5 ---');
+  final resultDay5Part1 = await Day5.runPart1();
+  final resultDay5Part2 = await Day5.runPart2();
+
+  print('Crates on top: $resultDay5Part1');
+  print('Actual crates on top: $resultDay5Part2');
+  print('--- END OF DAY 5 ---');
 }
