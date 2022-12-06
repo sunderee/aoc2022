@@ -40,4 +40,12 @@ Future<void> main() async {
   print('Crates on top: $resultDay5Part1');
   print('Actual crates on top: $resultDay5Part2');
   print('--- END OF DAY 5 ---');
+
+  print('--- START OF DAY 6 ---');
+  final resultDay6Part1 = await Day6.runPart1();
+  final resultDay6Part2 = await Day6.runPart2();
+
+  print('# characters before first start-of-packet marker: $resultDay6Part1');
+  print('# characters before first start-of-message marker: $resultDay6Part2');
+  print('--- END OF DAY 6 ---');
 }
