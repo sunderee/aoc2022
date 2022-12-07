@@ -6,6 +6,9 @@
 .dart_tool/
 .packages
 
+# macOS
+.DS_Store
+
 # Conventional directory for build output.
 build/
 

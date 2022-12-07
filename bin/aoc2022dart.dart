@@ -39,7 +39,7 @@ Future<void> main() async {
 
   print('Crates on top: $resultDay5Part1');
   print('Actual crates on top: $resultDay5Part2');
-  print('--- END OF DAY 5 ---');
+  print('--- END OF DAY 5 ---\n');
 
   print('--- START OF DAY 6 ---');
   final resultDay6Part1 = await Day6.runPart1();
@@ -47,5 +47,13 @@ Future<void> main() async {
 
   print('# characters before first start-of-packet marker: $resultDay6Part1');
   print('# characters before first start-of-message marker: $resultDay6Part2');
+  print('--- END OF DAY 6 ---\n');
+
+  print('--- START OF DAY 7 ---');
+  final resultDay7Part1 = await Day7.runPart1();
+  final resultDay7Part2 = await Day7.runPart2();
+
+  print('Total size of directories smaller than 100k: $resultDay7Part1');
+  print('Size of the smallest directory to delete: $resultDay7Part2');
   print('--- END OF DAY 6 ---');
 }

@@ -20,6 +20,11 @@ dependencies:
     git:
       url: git@github.com:sunderee/stack.git
       ref: master
+  nary_tree:
+    git:
+      url: git@github.com:sunderee/nary-tree.git
+      ref: 1086606681ea8e77a039b580cbe935c24dfb6224
+  meta: ^1.8.0
 
 dev_dependencies:
   lints: ^2.0.1
