@@ -55,5 +55,13 @@ Future<void> main() async {
 
   print('Total size of directories smaller than 100k: $resultDay7Part1');
   print('Size of the smallest directory to delete: $resultDay7Part2');
-  print('--- END OF DAY 6 ---');
+  print('--- END OF DAY 7 ---\n');
+
+  print('--- START OF DAY 8 ---');
+  final resultDay8Part1 = await Day8.runPart1();
+  final resultDay8Part2 = await Day8.runPart2();
+
+  print('Number of visible trees: $resultDay8Part1');
+  print('Best scenic score: $resultDay8Part2');
+  print('--- END OF DAY 8 ---\n');
 }
