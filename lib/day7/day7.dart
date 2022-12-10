@@ -1,6 +1,5 @@
 import 'package:aoc2022dart/common/read_txt.dart';
 import 'package:dart_scope_functions/dart_scope_functions.dart';
-import 'package:meta/meta.dart';
 import 'package:nary_tree/nary_tree.dart';
 
 class Day7 {
@@ -144,7 +143,6 @@ class Day7 {
   const Day7._();
 }
 
-@immutable
 class _FileObject {
   final String name;
   final bool isDirectory;
@@ -157,7 +155,6 @@ class _FileObject {
   });
 }
 
-@immutable
 class _FileSystemObject {
   final String name;
   final bool isDirectory;

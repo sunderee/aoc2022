@@ -1,10 +1,10 @@
 name: aoc2022dart
 description: Advent of Code 2022
 publish_to: "none"
-version: 1.0.8
+version: 1.0.9
 
 environment:
-  sdk: ">=2.19.0-374.1.beta <3.0.0"
+  sdk: ">=2.19.0-444.1.beta <3.0.0"
 
 dependencies:
   path: ^1.8.2
@@ -23,8 +23,7 @@ dependencies:
   nary_tree:
     git:
       url: git@github.com:sunderee/nary-tree.git
-      ref: 1086606681ea8e77a039b580cbe935c24dfb6224
-  meta: ^1.8.0
+      ref: master
 
 dev_dependencies:
   lints: ^2.0.1

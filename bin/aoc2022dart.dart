@@ -64,4 +64,12 @@ Future<void> main() async {
   print('Number of visible trees: $resultDay8Part1');
   print('Best scenic score: $resultDay8Part2');
   print('--- END OF DAY 8 ---\n');
+
+  print('--- START OF DAY 9 ---');
+  final resultDay9Part1 = await Day9.runPart1();
+  final resultDay9Part2 = await Day9.runPart2();
+
+  print('Visited positions by rope\'s tail: $resultDay9Part1');
+  print('Oh snap! Positions visited by tail at least once: $resultDay9Part2');
+  print('--- END OF DAY 9 ---\n');
 }

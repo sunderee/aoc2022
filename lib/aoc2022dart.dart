@@ -6,3 +6,4 @@ export 'day5/day5.dart';
 export 'day6/day6.dart';
 export 'day7/day7.dart';
 export 'day8/day8.dart';
+export 'day9/day9.dart';
