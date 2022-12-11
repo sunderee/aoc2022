@@ -1,5 +1,5 @@
-import 'package:aoc2022dart/common/read_txt.dart';
-import 'package:dart_scope_functions/dart_scope_functions.dart';
+import 'package:aoc2022dart/common/helpers/read_txt.dart';
+import 'package:aoc2022dart/common/helpers/scope_functions/let.dart';
 
 class Day10 {
   static Future<int> runPart1({bool useTest = false}) async {

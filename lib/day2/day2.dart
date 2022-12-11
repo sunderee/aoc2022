@@ -1,4 +1,4 @@
-import 'package:aoc2022dart/common/read_txt.dart';
+import 'package:aoc2022dart/common/helpers/read_txt.dart';
 
 class Day2 {
   static Future<int> runPart1({bool useTest = false}) async {

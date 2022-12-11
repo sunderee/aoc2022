@@ -1,29 +1,18 @@
 name: aoc2022dart
 description: Advent of Code 2022
 publish_to: "none"
-version: 1.0.9
+version: 1.0.11
 
 environment:
   sdk: ">=2.19.0-444.1.beta <3.0.0"
 
 dependencies:
   path: ^1.8.2
-  tuples:
+  equatable:
     git:
-      url: git@github.com:sunderee/tuples.git
+      url: git@github.com:sunderee/equatable.git
       ref: master
-  dart_scope_functions:
-    git:
-      url: git@github.com:sunderee/dart-scope-functions.git
-      ref: master
-  stack:
-    git:
-      url: git@github.com:sunderee/stack.git
-      ref: master
-  nary_tree:
-    git:
-      url: git@github.com:sunderee/nary-tree.git
-      ref: master
+  meta: ^1.8.0
 
 dev_dependencies:
   lints: ^2.0.1

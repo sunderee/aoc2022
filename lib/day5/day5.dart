@@ -1,7 +1,7 @@
-import 'package:aoc2022dart/common/read_txt.dart';
-import 'package:dart_scope_functions/dart_scope_functions.dart';
-import 'package:stack/stack.dart';
-import 'package:tuples/tuples.dart';
+import 'package:aoc2022dart/common/data_structures/stack/stack.dart';
+import 'package:aoc2022dart/common/helpers/read_txt.dart';
+import 'package:aoc2022dart/common/helpers/scope_functions/let.dart';
+import 'package:aoc2022dart/common/helpers/tuples.dart';
 
 class Day5 {
   static const int _maxTestStackSize = 6;
