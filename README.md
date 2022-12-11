@@ -37,4 +37,5 @@ out there reading this, take care and stay safe. The world needs you.
 On that note, also remember that some people are sadly not as fortunate. If you
 can, and if you want to, consider donating to charity.
 
-And for the first time in my life, I'll end a README with an emoji. Merry Christmas and a Happy New Year ❤️
+And for the first time in my life, I'll end README with an emoji. Merry Christmas
+and a Happy New Year ❤️
