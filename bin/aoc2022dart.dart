@@ -72,4 +72,12 @@ Future<void> main() async {
   print('Visited positions by rope\'s tail: $resultDay9Part1');
   print('Oh snap! Positions visited by tail at least once: $resultDay9Part2');
   print('--- END OF DAY 9 ---\n');
+
+  print('--- START OF DAY 10 ---');
+  final resultDay10Part1 = await Day10.runPart1();
+  final resultDay10Part2 = await Day10.runPart2();
+
+  print('Sum of signal strengths: $resultDay10Part1');
+  print('CRT output\n: $resultDay10Part2');
+  print('--- END OF DAY 10 ---\n');
 }
