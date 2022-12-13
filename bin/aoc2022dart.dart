@@ -96,4 +96,12 @@ Future<void> main() async {
   print('Shortest path from S -> E: $resultDay12Part1');
   print('Shortest path from any "a" -> E: $resultDay12Part2');
   print('--- END OF DAY 12 ---\n');
+
+  print('--- START OF DAY 13 ---');
+  final resultDay13Part1 = await Day13.runPart1();
+  final resultDay13Part2 = await Day13.runPart2();
+
+  print('Sum of indices of pairs in the right order: $resultDay13Part1');
+  print('Decoder key for distress signal: $resultDay13Part2');
+  print('--- END OF DAY 13 ---\n');
 }
