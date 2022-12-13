@@ -88,4 +88,12 @@ Future<void> main() async {
   print('Level of monkey business (20 rounds) $resultDay11Part1');
   print('Level of monkey business #2 (10k rounds): $resultDay11Part2');
   print('--- END OF DAY 11 ---\n');
+
+  print('--- START OF DAY 12 ---');
+  final resultDay12Part1 = await Day12.runPart1();
+  final resultDay12Part2 = await Day12.runPart2();
+
+  print('Shortest path from S -> E: $resultDay12Part1');
+  print('Shortest path from any "a" -> E: $resultDay12Part2');
+  print('--- END OF DAY 12 ---\n');
 }
