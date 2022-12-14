@@ -104,4 +104,12 @@ Future<void> main() async {
   print('Sum of indices of pairs in the right order: $resultDay13Part1');
   print('Decoder key for distress signal: $resultDay13Part2');
   print('--- END OF DAY 13 ---\n');
+
+  print('--- START OF DAY 14 ---');
+  final resultDay14Part1 = await Day14.runPart1();
+  final resultDay14Part2 = await Day14.runPart2();
+
+  print('Units of sand before they overflow to abyss: $resultDay14Part1');
+  print('Units of sand before they fill floor -> 500,0: $resultDay14Part2');
+  print('--- END OF DAY 14 ---\n');
 }
