@@ -2,7 +2,7 @@ import 'package:aoc2022dart/aoc2022dart.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Day 13', () {
+  group('Day 14', () {
     test('part 1', () async {
       final result = await Day14.runPart1(useTest: true);
       expect(result, 24);

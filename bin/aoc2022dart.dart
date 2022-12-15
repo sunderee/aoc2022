@@ -112,4 +112,12 @@ Future<void> main() async {
   print('Units of sand before they overflow to abyss: $resultDay14Part1');
   print('Units of sand before they fill floor -> 500,0: $resultDay14Part2');
   print('--- END OF DAY 14 ---\n');
+
+  print('--- START OF DAY 15 ---');
+  final resultDay15Part1 = await Day15.runPart1();
+  final resultDay15Part2 = await Day15.runPart2();
+
+  print('# positions that cannot contain a beacon: $resultDay15Part1');
+  print('Distress beacon\'s tuning frequency: $resultDay15Part2');
+  print('--- END OF DAY 15 ---\n');
 }

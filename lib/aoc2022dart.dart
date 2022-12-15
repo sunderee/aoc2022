@@ -4,6 +4,7 @@ export 'day11/day11.dart';
 export 'day12/day12.dart';
 export 'day13/day13.dart';
 export 'day14/day14.dart';
+export 'day15/day15.dart';
 export 'day2/day2.dart';
 export 'day3/day3.dart';
 export 'day4/day4.dart';
