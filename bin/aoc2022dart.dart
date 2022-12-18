@@ -120,4 +120,28 @@ Future<void> main() async {
   print('# positions that cannot contain a beacon: $resultDay15Part1');
   print('Distress beacon\'s tuning frequency: $resultDay15Part2');
   print('--- END OF DAY 15 ---\n');
+
+  print('--- START OF DAY 16 ---');
+  final resultDay16Part1 = await Day16.runPart1();
+  final resultDay16Part2 = await Day16.runPart2();
+
+  print('Total pressure released in 30 minutes: $resultDay16Part1');
+  print('Pressure released with the help of an elephant: $resultDay16Part2');
+  print('--- END OF DAY 16 ---\n');
+
+  print('--- START OF DAY 17 ---');
+  final resultDay17Part1 = await Day17.runPart1();
+  final resultDay17Part2 = await Day17.runPart2();
+
+  print('XXX: $resultDay17Part1');
+  print('XXX: $resultDay17Part2');
+  print('--- END OF DAY 17 ---\n');
+
+  print('--- START OF DAY 18 ---');
+  final resultDay18Part1 = await Day18.runPart1();
+  final resultDay18Part2 = await Day18.runPart2();
+
+  print('XXX: $resultDay18Part1');
+  print('XXX: $resultDay18Part2');
+  print('--- END OF DAY 18 ---\n');
 }
