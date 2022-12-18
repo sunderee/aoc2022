@@ -141,7 +141,7 @@ Future<void> main() async {
   final resultDay18Part1 = await Day18.runPart1();
   final resultDay18Part2 = await Day18.runPart2();
 
-  print('XXX: $resultDay18Part1');
-  print('XXX: $resultDay18Part2');
+  print('Surface area of scanned lava droplet: $resultDay18Part1');
+  print('Exterior surface area of scanned lava droplet: $resultDay18Part2');
   print('--- END OF DAY 18 ---\n');
 }
