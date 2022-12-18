@@ -5,12 +5,12 @@ void main() {
   group('Day 17', () {
     test('part 1', () async {
       final result = await Day17.runPart1(useTest: true);
-      expect(result, -1);
+      expect(result, 3068);
     });
 
-    test('part 6', () async {
+    test('part 2', () async {
       final result = await Day17.runPart2(useTest: true);
-      expect(result, -1);
+      expect(result, 1514285714288);
     });
   });
 }

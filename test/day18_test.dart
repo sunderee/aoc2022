@@ -8,7 +8,7 @@ void main() {
       expect(result, -1);
     });
 
-    test('part 6', () async {
+    test('part 2', () async {
       final result = await Day18.runPart2(useTest: true);
       expect(result, -1);
     });

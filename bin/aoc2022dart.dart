@@ -133,8 +133,8 @@ Future<void> main() async {
   final resultDay17Part1 = await Day17.runPart1();
   final resultDay17Part2 = await Day17.runPart2();
 
-  print('XXX: $resultDay17Part1');
-  print('XXX: $resultDay17Part2');
+  print('Rock tower height after 2022 rocks: $resultDay17Part1');
+  print('Rock tower height after 1e12 rocks: $resultDay17Part2');
   print('--- END OF DAY 17 ---\n');
 
   print('--- START OF DAY 18 ---');
