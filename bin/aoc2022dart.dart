@@ -144,4 +144,12 @@ Future<void> main() async {
   print('Surface area of scanned lava droplet: $resultDay18Part1');
   print('Exterior surface area of scanned lava droplet: $resultDay18Part2');
   print('--- END OF DAY 18 ---\n');
+
+  print('--- START OF DAY 19 ---');
+  final resultDay19Part1 = await Day19.runPart1();
+  final resultDay19Part2 = await Day19.runPart2();
+
+  print('Sum of all quality levels: $resultDay19Part1');
+  print('Result of first three multiplied: $resultDay19Part2');
+  print('--- END OF DAY 19 ---\n');
 }
