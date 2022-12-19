@@ -11,14 +11,6 @@ class Day19 {
     final realInput = 'lib/day19/input_19.txt';
     final input = await readTXT(useTest ? testInput : realInput);
 
-    final Map<String, int> robots = {'ore': 1, 'clay': 0, 'obsidian': 0};
-    final Map<String, int> materials = {
-      'ore': 1,
-      'clay': 0,
-      'obsidian': 0,
-      'geode': 0,
-    };
-
     final blueprintsList = input.split('\n').map((item) {
       final blueprintID = RegExp(r'(?<=Blueprint )\d{1,2}')
           .stringMatch(item)
@@ -65,8 +57,8 @@ class Day19 {
             _getMaxAmountOfProducedGeodes(
               timeLeft: 24,
               currentMaxGeodesProduced: 0,
-              robots: robots,
-              materials: materials,
+              robots: _Robots(),
+              materials: _Materials(),
               blueprint: item,
             ))
         .reduce((value, element) => value + element);
@@ -76,14 +68,6 @@ class Day19 {
     final testInput = 'lib/day19/test.input_19.txt';
     final realInput = 'lib/day19/input_19.txt';
     final input = await readTXT(useTest ? testInput : realInput);
-
-    final Map<String, int> robots = {'ore': 1, 'clay': 0, 'obsidian': 0};
-    final Map<String, int> materials = {
-      'ore': 1,
-      'clay': 0,
-      'obsidian': 0,
-      'geode': 0,
-    };
 
     final blueprintsList = input
         .split('\n')
@@ -131,28 +115,30 @@ class Day19 {
         .sublist(0, useTest ? 2 : 3);
 
     return blueprintsList
-        .map((item) => _getMaxAmountOfProducedGeodes(
-            timeLeft: 32,
-            currentMaxGeodesProduced: 0,
-            robots: robots,
-            materials: materials,
-            blueprint: item))
-        .reduce((value, element) => value * element);
+        .map(
+          (item) => _getMaxAmountOfProducedGeodes(
+              timeLeft: 32,
+              currentMaxGeodesProduced: 0,
+              robots: _Robots(),
+              materials: _Materials(),
+              blueprint: item),
+        )
+        .fold<int>(1, (previousValue, element) => previousValue * element);
   }
 
   static int _getMaxAmountOfProducedGeodes({
     required int timeLeft,
     required int currentMaxGeodesProduced,
-    required Map<String, int> robots,
-    required Map<String, int> materials,
+    required _Robots robots,
+    required _Materials materials,
     required _Blueprint blueprint,
   }) {
-    if (timeLeft == 0) {
+    if (timeLeft <= 0) {
       return currentMaxGeodesProduced;
     }
 
     final maxGeodesProduced = max(
-      materials['geode']!,
+      materials.geodeCount,
       currentMaxGeodesProduced,
     );
     currentMaxGeodesProduced = maxGeodesProduced;
@@ -164,29 +150,31 @@ class Day19 {
       blueprint.geodeRobotCosts.first
     ].reduce(max);
 
-    if (robots['obsidian']! > 0) {
+    if (robots.obsidianCollectingRobotsCount > 0) {
       final canGeodeRobotBeBuilt =
-          blueprint.geodeRobotCosts.first <= materials['ore']! &&
-              blueprint.geodeRobotCosts.second <= materials['obsidian']!;
+          blueprint.geodeRobotCosts.first <= materials.oreCount &&
+              blueprint.geodeRobotCosts.second <= materials.obsidianCount;
 
       final timeToHavingEnoughResources = max(
-              ((blueprint.geodeRobotCosts.first - materials['ore']!) /
-                      robots['ore']!)
+              ((blueprint.geodeRobotCosts.first - materials.oreCount) /
+                      robots.oreCollectingRobotsCount)
                   .ceil(),
-              ((blueprint.geodeRobotCosts.second - materials['obsidian']!) /
-                  robots['obsidian']!))
+              ((blueprint.geodeRobotCosts.second - materials.obsidianCount) /
+                  robots.obsidianCollectingRobotsCount))
           .toInt();
 
       final time = (canGeodeRobotBeBuilt ? 0 : timeToHavingEnoughResources) + 1;
 
-      materials['ore'] = materials['ore']! +
-          time * robots['ore']! -
-          blueprint.geodeRobotCosts.first;
-      materials['clay'] = materials['clay']! + time * robots['clay']!;
-      materials['obsidian'] = materials['obsidian']! +
-          time * robots['obsidian']! -
-          blueprint.geodeRobotCosts.second;
-      materials['geode'] = materials['geode']! + (timeLeft - time);
+      materials
+        ..oreCount = materials.oreCount +
+            time * robots.oreCollectingRobotsCount -
+            blueprint.geodeRobotCosts.first
+        ..clayCount =
+            materials.clayCount + time * robots.clayCollectingRobotsCount
+        ..obsidianCount = materials.obsidianCount +
+            time * robots.obsidianCollectingRobotsCount -
+            blueprint.geodeRobotCosts.second
+        ..geodeCount = materials.geodeCount + (timeLeft - time);
 
       final maxProduced = max(
         _getMaxAmountOfProducedGeodes(
@@ -205,33 +193,35 @@ class Day19 {
       }
     }
 
-    if (robots['clay']! > 0) {
+    if (robots.clayCollectingRobotsCount > 0) {
       final canObsidianRobotBeBuilt =
-          blueprint.obsidianRobotCosts.first <= materials['ore']! &&
-              blueprint.obsidianRobotCosts.second <= materials['clay']!;
+          blueprint.obsidianRobotCosts.first <= materials.oreCount &&
+              blueprint.obsidianRobotCosts.second <= materials.clayCount;
 
       final timeToHavingEnoughResources = max(
-              ((blueprint.obsidianRobotCosts.first - materials['ore']!) /
-                      robots['ore']!)
+              ((blueprint.obsidianRobotCosts.first - materials.oreCount) /
+                      robots.oreCollectingRobotsCount)
                   .ceil(),
-              ((blueprint.obsidianRobotCosts.second - materials['clay']!) /
-                  robots['clay']!))
+              ((blueprint.obsidianRobotCosts.second - materials.clayCount) /
+                  robots.clayCollectingRobotsCount))
           .toInt();
 
       final time =
           (canObsidianRobotBeBuilt ? 0 : timeToHavingEnoughResources) + 1;
 
       if (timeLeft - time > 2) {
-        robots['obsidian'] = robots['obsidian']! + 1;
+        robots.obsidianCollectingRobotsCount =
+            robots.obsidianCollectingRobotsCount + 1;
 
-        materials['ore'] = materials['ore']! +
-            time * robots['ore']! -
-            blueprint.obsidianRobotCosts.first;
-        materials['clay'] = materials['clay']! +
-            time * robots['clay']! -
-            blueprint.obsidianRobotCosts.second;
-        materials['obsidian'] =
-            materials['obsidian']! + time * robots['obsidian']!;
+        materials
+          ..oreCount = materials.oreCount +
+              time * robots.oreCollectingRobotsCount -
+              blueprint.obsidianRobotCosts.first
+          ..clayCount = materials.clayCount +
+              time * robots.clayCollectingRobotsCount -
+              blueprint.obsidianRobotCosts.second
+          ..obsidianCount = materials.obsidianCount +
+              time * robots.obsidianCollectingRobotsCount;
 
         final maxProduced = max(
           _getMaxAmountOfProducedGeodes(
@@ -247,21 +237,26 @@ class Day19 {
       }
     }
 
-    if (robots['clay']! < blueprint.obsidianRobotCosts.second) {
-      final canClayRobotBeBuilt = blueprint.clayRobotCost <= materials['ore']!;
+    if (robots.clayCollectingRobotsCount <
+        blueprint.obsidianRobotCosts.second) {
+      final canClayRobotBeBuilt = blueprint.clayRobotCost <= materials.oreCount;
       final timeUntilEnoughOre =
-          ((blueprint.clayRobotCost - materials['ore']!) / robots['ore']!)
+          ((blueprint.clayRobotCost - materials.oreCount) /
+                  robots.oreCollectingRobotsCount)
               .ceil();
       final time = (canClayRobotBeBuilt ? 0 : timeUntilEnoughOre) + 1;
 
       if (timeLeft - time > 3) {
-        robots['clay'] = robots['clay']! + 1;
+        robots.clayCollectingRobotsCount = robots.clayCollectingRobotsCount + 1;
 
-        materials['ore'] =
-            materials['ore']! + time * robots['ore']! - blueprint.clayRobotCost;
-        materials['clay'] = materials['clay']! + time * robots['clay']!;
-        materials['obsidian'] =
-            materials['obsidian']! + time * robots['obsidian']!;
+        materials
+          ..oreCount = materials.oreCount +
+              time * robots.oreCollectingRobotsCount -
+              blueprint.clayRobotCost
+          ..clayCount =
+              materials.clayCount + time * robots.clayCollectingRobotsCount
+          ..obsidianCount = materials.obsidianCount +
+              time * robots.obsidianCollectingRobotsCount;
 
         final maxProduced = max(
           _getMaxAmountOfProducedGeodes(
@@ -277,21 +272,25 @@ class Day19 {
       }
     }
 
-    if (robots['ore']! < maxOresNeeded) {
-      final canOreRobotBeBuilt = blueprint.oreRobotCost <= materials['ore']!;
+    if (robots.oreCollectingRobotsCount < maxOresNeeded) {
+      final canOreRobotBeBuilt = blueprint.oreRobotCost <= materials.oreCount;
       final timeUntilEnoughOre =
-          ((blueprint.oreRobotCost - materials['ore']!) / robots['ore']!)
+          ((blueprint.oreRobotCost - materials.oreCount) /
+                  robots.oreCollectingRobotsCount)
               .ceil();
       final time = (canOreRobotBeBuilt ? 0 : timeUntilEnoughOre) + 1;
 
       if (timeLeft - time > 4) {
-        robots['ore'] = robots['ore']! + 1;
+        robots.oreCollectingRobotsCount = robots.oreCollectingRobotsCount + 1;
 
-        materials['ore'] =
-            materials['ore']! + time * robots['ore']! - blueprint.oreRobotCost;
-        materials['clay'] = materials['clay']! + time * robots['clay']!;
-        materials['obsidian'] =
-            materials['obsidian']! + time * robots['obsidian']!;
+        materials
+          ..oreCount = materials.oreCount +
+              time * robots.oreCollectingRobotsCount -
+              blueprint.oreRobotCost
+          ..clayCount =
+              materials.clayCount + time * robots.clayCollectingRobotsCount
+          ..obsidianCount = materials.obsidianCount +
+              time * robots.obsidianCollectingRobotsCount;
 
         currentMaxGeodesProduced = max(
           _getMaxAmountOfProducedGeodes(
@@ -326,4 +325,41 @@ class _Blueprint {
     required this.obsidianRobotCosts,
     required this.geodeRobotCosts,
   });
+}
+
+final Map<String, int> robots = {
+  'ore': 1,
+  'clay': 0,
+  'obsidian': 0,
+};
+
+final Map<String, int> materials = {
+  'ore': 1,
+  'clay': 0,
+  'obsidian': 0,
+  'geode': 0,
+};
+
+class _Robots {
+  int oreCollectingRobotsCount = 1;
+  int clayCollectingRobotsCount = 0;
+  int obsidianCollectingRobotsCount = 0;
+
+  _Robots()
+      : oreCollectingRobotsCount = 1,
+        clayCollectingRobotsCount = 0,
+        obsidianCollectingRobotsCount = 0;
+}
+
+class _Materials {
+  int oreCount = 0;
+  int clayCount = 0;
+  int obsidianCount = 0;
+  int geodeCount = 0;
+
+  _Materials()
+      : oreCount = 0,
+        clayCount = 0,
+        obsidianCount = 0,
+        geodeCount = 0;
 }
