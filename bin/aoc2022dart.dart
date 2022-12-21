@@ -152,4 +152,12 @@ Future<void> main() async {
   print('Sum of all quality levels: $resultDay19Part1');
   print('Result of first three multiplied: $resultDay19Part2');
   print('--- END OF DAY 19 ---\n');
+
+  print('--- START OF DAY 20 ---');
+  final resultDay20Part1 = await Day20.runPart1();
+  final resultDay20Part2 = await Day20.runPart2();
+
+  print('Sum of numbers forming groove coordinates: $resultDay20Part1');
+  print('Sum after applying the decryption key: $resultDay20Part2');
+  print('--- END OF DAY 20 ---\n');
 }
