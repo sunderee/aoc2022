@@ -166,6 +166,6 @@ Future<void> main() async {
   final resultDay21Part2 = await Day21.runPart2();
 
   print('Monkey root will yell: $resultDay21Part1');
-  print('XXX: $resultDay21Part2');
+  print('Actually, he will yell: $resultDay21Part2');
   print('--- END OF DAY 21 ---\n');
 }

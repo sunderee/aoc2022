@@ -1,8 +1,10 @@
 import 'package:aoc2022dart/common/helpers/read_txt.dart';
+import 'package:aoc2022dart/common/helpers/scope_functions/also.dart';
 import 'package:aoc2022dart/common/helpers/scope_functions/let.dart';
 import 'package:aoc2022dart/common/helpers/tuples.dart';
 import 'package:equatable/equatable.dart';
 
+/// This day's solution is heavily inspired by work from Meï.
 class Day21 {
   static Future<int> runPart1({bool useTest = false}) async {
     final testInput = 'lib/day21/test.input_21.txt';
@@ -52,7 +54,8 @@ class Day21 {
                 .stringMatch(item)
                 ?.let((it) => int.parse(it)) ??
             0;
-        return Monkey.screaming(monkeyID, value);
+
+        return GenericMonkey(monkeyID, value: value);
       } else {
         final monkeys = RegExp(r'(?<=\: )[a-z]{4} (\+|\-|\*|\/) [a-z]{4}')
                 .stringMatch(item) ??
@@ -62,33 +65,55 @@ class Day21 {
           monkeys.substring(0, 4),
           monkeys.substring(monkeys.length - 4, monkeys.length),
         );
-        return Monkey.smart(monkeyID, operation, monkeysPair);
+        return GenericMonkey(monkeyID, screamingMonkeyIDs: monkeysPair)
+            .also((it) => it.operation = operation);
       }
     }).toList();
-    final monkeysMap = monkeysList
-        .map((item) => MapEntry(
-            item is ScreamingMonkey
-                ? item.monkeyID
-                : (item as SmartMonkey).monkeyID,
-            item))
+
+    final genericMonkeysMap = monkeysList
+        .map((item) => MapEntry(item.monkeyID, item))
         .let((it) => Map.fromEntries(it));
 
-    final root = monkeysList.firstWhere((item) =>
-        (item is ScreamingMonkey
-            ? item.monkeyID
-            : (item as SmartMonkey).monkeyID) ==
-        'root');
-    monkeysList
-      ..remove(root)
-      ..add(root);
+    final root = monkeysList
+        .firstWhere((item) => item.monkeyID == 'root')
+        .also((it) => it.operation = Operation.subtraction);
+    final human = monkeysList
+        .firstWhere((item) => item.monkeyID == 'humn')
+        .also((it) => it.value = 1);
 
-    final leMuh = monkeysList.firstWhere((item) =>
-        (item is ScreamingMonkey
-            ? item.monkeyID
-            : (item as SmartMonkey).monkeyID) ==
-        'humn');
+    monkeysList.removeWhere((item) => item.monkeyID == 'root');
+    monkeysList.add(root);
 
-    return -1;
+    monkeysList.removeWhere((item) => item.monkeyID == 'humn');
+    monkeysList.add(human);
+
+    int result = 0;
+    int lowerBound = 0;
+    int upperBound = 0;
+    while (true) {
+      final stack = [root];
+      result = _runSimulationGeneric(stack, genericMonkeysMap);
+      if (result == 0) {
+        break;
+      }
+
+      final human = monkeysList.firstWhere((item) => item.monkeyID == 'humn');
+      if (result < 0) {
+        lowerBound = human.value ?? -1;
+      } else {
+        upperBound = human.value ?? -1;
+      }
+
+      if (lowerBound == 0 || upperBound == 0) {
+        human.value = human.value! * 2;
+      } else {
+        human.value = (lowerBound + upperBound) ~/ 2;
+      }
+      monkeysList.removeWhere((item) => item.monkeyID == 'humn');
+      monkeysList.add(human);
+    }
+    return monkeysList.firstWhere((item) => item.monkeyID == 'humn').value ??
+        -1;
   }
 
   static int _runSimulation(List<Monkey> stack, Map<String, Monkey> monkeyMap) {
@@ -113,6 +138,40 @@ class Day21 {
           secondValue = _runSimulation(stack, monkeyMap);
         } else {
           secondValue = (second as ScreamingMonkey).number;
+        }
+
+        result = monkey.operation.result(firstValue, secondValue);
+      }
+    }
+
+    return result;
+  }
+
+  static int _runSimulationGeneric(
+    List<GenericMonkey> stack,
+    Map<String, GenericMonkey> monkeyMap,
+  ) {
+    int result = 0;
+
+    while (stack.isNotEmpty) {
+      final monkey = stack.removeLast();
+      if (monkey is SmartMonkey) {
+        int firstValue = -1;
+        final first = monkeyMap[monkey.screamingMonkeyIDs?.first];
+        if (first != null && first.screamingMonkeyIDs != null) {
+          stack.add(first);
+          firstValue = _runSimulationGeneric(stack, monkeyMap);
+        } else {
+          firstValue = first?.value ?? 0;
+        }
+
+        int secondValue = -1;
+        final second = monkeyMap[monkey.screamingMonkeyIDs?.second];
+        if (second != null && second.screamingMonkeyIDs != null) {
+          stack.add(second);
+          secondValue = _runSimulationGeneric(stack, monkeyMap);
+        } else {
+          secondValue = second?.value ?? 0;
         }
 
         result = monkey.operation.result(firstValue, secondValue);
@@ -208,4 +267,18 @@ class SmartMonkey extends Monkey {
     this.operation,
     this.screamingMonkeyIDs,
   ) : super._();
+}
+
+class GenericMonkey {
+  final String monkeyID;
+  final Pair<String, String>? screamingMonkeyIDs;
+
+  int? value;
+  Operation operation = Operation.subtraction;
+
+  GenericMonkey(
+    this.monkeyID, {
+    this.value,
+    this.screamingMonkeyIDs,
+  });
 }
