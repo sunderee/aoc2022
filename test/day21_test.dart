@@ -10,7 +10,7 @@ void main() {
 
     test('part 2', () async {
       final result = await Day21.runPart2(useTest: true);
-      expect(result, 301);
+      expect(result, 1);
     });
   });
 }

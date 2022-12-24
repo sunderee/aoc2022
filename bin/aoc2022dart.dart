@@ -168,4 +168,12 @@ Future<void> main() async {
   print('Monkey root will yell: $resultDay21Part1');
   print('Actually, he will yell: $resultDay21Part2');
   print('--- END OF DAY 21 ---\n');
+
+  print('--- START OF DAY 22 ---');
+  final resultDay22Part1 = await Day22.runPart1();
+  final resultDay22Part2 = await Day22.runPart2();
+
+  print('Password from monkey\'s notes: $resultDay22Part1');
+  print('Password when folding map into a cube: $resultDay22Part2');
+  print('--- END OF DAY 22 ---\n');
 }

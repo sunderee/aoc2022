@@ -10,6 +10,7 @@ dependencies:
   path: ^1.8.3
   directed_graph: ^0.3.7
   collection: ^1.17.0
+  more: ^3.9.5
   equatable: ^2.0.5
   meta: ^1.8.0
 
