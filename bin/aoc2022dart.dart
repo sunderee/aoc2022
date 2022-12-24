@@ -176,4 +176,12 @@ Future<void> main() async {
   print('Password from monkey\'s notes: $resultDay22Part1');
   print('Password when folding map into a cube: $resultDay22Part2');
   print('--- END OF DAY 22 ---\n');
+
+  print('--- START OF DAY 23 ---');
+  final resultDay23Part1 = await Day23.runPart1();
+  final resultDay23Part2 = await Day23.runPart2();
+
+  print('# of empty ground tiles after 10 rounds: $resultDay23Part1');
+  print('Round when nobody moves: $resultDay23Part2');
+  print('--- END OF DAY 23 ---\n');
 }
