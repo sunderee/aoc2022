@@ -195,9 +195,7 @@ Future<void> main() async {
 
   print('--- START OF DAY 25 ---');
   final resultDay25Part1 = await Day25.runPart1();
-  final resultDay25Part2 = await Day25.runPart2();
 
   print('SNAFU number supplied to Bob\'s console: $resultDay25Part1');
-  print('XXX: $resultDay25Part2');
   print('--- MERRY CHRISTMAS!!! ---\n');
 }

@@ -10,6 +10,9 @@ I'm not going to document what my code does, as I want you to read through the
 tasks on your own. The stories are fascinating, and I'm sure they'll bring a
 smile to your face. Or two. The more the merrier!
 
+Some solutions were heavily inspired by works of others! This year's AoC was
+an incredible learning experience. Hope you learn a thing or two as well!
+
 ## Usage
 
 Make sure you have Dart installed on your system. Next, get dependencies. Now,
