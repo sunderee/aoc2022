@@ -184,4 +184,20 @@ Future<void> main() async {
   print('# of empty ground tiles after 10 rounds: $resultDay23Part1');
   print('Round when nobody moves: $resultDay23Part2');
   print('--- END OF DAY 23 ---\n');
+
+  print('--- START OF DAY 24 ---');
+  final resultDay24Part1 = await Day24.runPart1();
+  final resultDay24Part2 = await Day24.runPart2();
+
+  print('Minutes to traverse breezed landscape: $resultDay24Part1');
+  print('Time to reach the goal -> back to start -> goal: $resultDay24Part2');
+  print('--- END OF DAY 24 ---\n');
+
+  print('--- START OF DAY 25 ---');
+  final resultDay25Part1 = await Day25.runPart1();
+  final resultDay25Part2 = await Day25.runPart2();
+
+  print('SNAFU number supplied to Bob\'s console: $resultDay25Part1');
+  print('XXX: $resultDay25Part2');
+  print('--- MERRY CHRISTMAS!!! ---\n');
 }
